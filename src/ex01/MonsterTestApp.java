@@ -34,11 +34,14 @@ public class MonsterTestApp {
 		monsters.stream()
 				.filter(monster -> monster.getElement().equals("불"))
 		        .forEach(monster -> System.out.println(monster.getName()));
-		  
-  
-          
-            
-	
+		// 리스트에 들어있는 monster 객체는 값은 갔더라고 메모리 위치가 다르다
+		// 리스트의 객체를 맵의 키로 쓸 수 있다. >> 이 방법을 활용하면 속도가 훨씬 빠르다! 
+		monsters.stream()
+		        .map(monster -> monster.getName())
+		        .forEach(name -> System.out.println(name));
+		
+		long totalcount = monsters.stream().count();
+		System.out.println("total = " + totalcount);
 	}
 
 }
